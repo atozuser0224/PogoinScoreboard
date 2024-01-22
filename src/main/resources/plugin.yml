@@ -1,0 +1,5 @@
+name: PogoinScoreboard
+version: '${version}'
+main: org.gang.pogoinscoreboard.PogoinScoreboard
+api-version: '1.20'
+
