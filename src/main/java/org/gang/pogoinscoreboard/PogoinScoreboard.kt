@@ -61,7 +61,7 @@ class PogoinScoreboard : JavaPlugin(),Listener {
                 wait2+=89
             }
         }
-        commandAPICommand("addscoreboard") {
+        commandAPICommand("디버프") {
             anyExecutor { _, args -> // Command can be executed by anyone and anything (such as entities, the console, etc.)
                 wait+=89
             }
@@ -71,11 +71,10 @@ class PogoinScoreboard : JavaPlugin(),Listener {
         wait+=89
     }
     public fun increaseWool(){
-        wait+=89
+        wait2+=89
     }
     override fun onEnable() {
         Bukkit.getPluginManager().registerEvents(this,this)
-
         val essentialsPlugin = server.pluginManager.getPlugin("Essentials")
         logger.info("enable scoreboard")
         taskId = this.server.scheduler.scheduleAsyncRepeatingTask(this, {
@@ -90,7 +89,7 @@ class PogoinScoreboard : JavaPlugin(),Listener {
             stack = ceil(wait.toDouble()/90.0).toInt()+ceil(wait2.toDouble()/90.0).toInt()
             if (wait != 0 ){
                 val w = wait%90
-                if (w in 21..79 && w%5.0 == 0.0)addEffectTitle()
+                if (w in 21..79 && w%3.0 == 0.0)addEffectTitle()
                 else if (w == 20) addEffect()
 
 
@@ -217,7 +216,7 @@ class PogoinScoreboard : JavaPlugin(),Listener {
             val potionEffect = PotionEffect(effect.potionType, time*20 + (p.activePotionEffects.find { it.type == effect.potionType }?.duration?:0),force,false,true,true)
 
             Bukkit.getScheduler().runTask(this, Runnable {
-                p.playSound(p,Sound.ENTITY_EXPERIENCE_ORB_PICKUP,0.9f,1.0f)
+                p.playSound(p,Sound.ENTITY_PLAYER_LEVELUP,0.9f,1.0f)
                 p.sendTitle("${ChatColor.RED}디버프 : ${ChatColor.WHITE}${effect.name} $sb",
                     "${ChatColor.GRAY}$time", 0, 20, 0)
                 if (effect.potionType == PotionEffectType.FIRE_RESISTANCE){
@@ -256,7 +255,7 @@ class PogoinScoreboard : JavaPlugin(),Listener {
             Bukkit.getScheduler().runTask(this, Runnable {
                 p.playSound(p,Sound.ENTITY_EXPERIENCE_ORB_PICKUP,0.9f,1.0f)
                 p.sendTitle("${ChatColor.RED}디버프 : ${ChatColor.WHITE}${effect.name} $sb",
-                    "${ChatColor.GRAY}$time", 0, 10, 0)
+                    "${ChatColor.GRAY}$time", 0, 3, 0)
 
             })
 
