@@ -2,4 +2,5 @@ name: PogoinScoreboard
 version: '1.0'
 main: org.gang.pogoinscoreboard.PogoinScoreboard
 api-version: '1.20'
+depend: [CommandAPI]
 

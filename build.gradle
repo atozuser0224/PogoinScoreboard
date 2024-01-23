@@ -25,6 +25,9 @@ dependencies {
     compileOnly "org.spigotmc:spigot-api:1.20.4-R0.1-SNAPSHOT"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22"
     compileOnly "com.github.MilkBowl:VaultAPI:1.7"
+    implementation "dev.jorel:commandapi-bukkit-shade:9.3.0"
+    implementation "dev.jorel:commandapi-bukkit-kotlin:9.3.0"
+
 }
 
 def targetJavaVersion = 17
@@ -58,4 +61,7 @@ shadowJar{
     manifest {
         attributes 'Main-Class': 'org.zepelown.kotlintestplugin.KotlinTestPlugin'
     }
+
+    relocate("dev.jorel.commandapi", "my.custom.package.commandapi")
+
 }
